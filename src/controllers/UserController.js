@@ -1,11 +1,11 @@
 const UserController = app => {
-  app.get('/users', (req, res) => {
+  app.get('/user', (req, res) => {
     res.send('Rastreamento da aplicação feito com NODEMON');
   });
 
-  app.post('/users', (req, res) => {
-    res.send('Usuário cadastrado');
+  app.post('/user', (req, res) => {
+    res.send('Usuário cadastrado com sucesso');
   });
-};
+}
 
 export default UserController;
