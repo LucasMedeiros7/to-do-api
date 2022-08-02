@@ -4,6 +4,7 @@ const UserController = app => {
   });
 
   app.post('/user', (req, res) => {
+    console.log(req.body);
     res.send('Usuário cadastrado com sucesso');
   });
 }
