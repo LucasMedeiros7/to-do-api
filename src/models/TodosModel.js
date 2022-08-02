@@ -1,4 +1,4 @@
-export default class TodosModel {
+class TodosModel {
   constructor(id, text, status, userId) {
     this.id = id;
     this.text = text;
@@ -6,3 +6,5 @@ export default class TodosModel {
     this.userId = userId;
   }
 }
+
+export default TodosModel;

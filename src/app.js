@@ -5,7 +5,7 @@ import TodosController from './controllers/TodosController.js';
 const app = express();
 const port = 3333;
 
-app.use(express.json())
+app.use(express.json());
 
 UserController(app);
 TodosController(app);
@@ -13,5 +13,3 @@ TodosController(app);
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
-

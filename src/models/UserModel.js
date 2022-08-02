@@ -1,4 +1,4 @@
-export default class UserModel {
+class UserModel {
   constructor(id, name, email, password) {
     this.id = id;
     this.name = name;
@@ -6,3 +6,5 @@ export default class UserModel {
     this.password = password;
   }
 }
+
+export default UserModel;
