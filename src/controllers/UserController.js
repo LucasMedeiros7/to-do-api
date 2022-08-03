@@ -1,5 +1,5 @@
 import UserModel from '../models/UserModel.js';
-import { dbUser } from '../data/db.js';
+import { dbUser } from '../database/db.js';
 
 function UserController(app) {
   //{method: 'GET'}
@@ -8,7 +8,7 @@ function UserController(app) {
   });
 
   app.get('/user/:id', (req, res) => {
-    const selectId = dbUser.find(user => req.params.id == user.id);
+    const selectId = dbUser.find(user => +req.params.id === +user.id);
     res.send(selectId);
   });
 
@@ -20,6 +20,12 @@ function UserController(app) {
 
     dbUser.push(user);
     res.send(dbUser);
+  });
+
+  //{method: 'DELETE'}
+  app.delete('/user/:id', (req, res) => {
+    dbUser.splice(req.params.id - 1, 1);
+    res.send('Deleted User');
   });
 }
 
