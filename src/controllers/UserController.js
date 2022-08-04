@@ -2,30 +2,39 @@ import User from '../models/User.js';
 import { dbUser } from '../database/db.js';
 
 function UserController(app) {
-  //{method: 'GET'}
   app.get('/user', (req, res) => {
+    if (!dbUser.length) {
+      res.send('User Not Found');
+      return;
+    }
     res.send(dbUser);
   });
 
   app.get('/user/:id', (req, res) => {
-    const selectId = dbUser.find(user => +req.params.id === +user.id);
+    const selectId = dbUser.find(user => req.params.id === user.id);
+
+    if (!selectId) {
+      res.send('User Not Found');
+      return;
+    }
+
     res.send(selectId);
   });
 
-  //{method: 'POST'}
   app.post('/user', (req, res) => {
-    const { name, email, password } = req.body;
-    const userId = dbUser.length + 1;
-    const user = new User(userId, name, email, password);
+    const user = new User(req.body.name, req.body.email);
 
     dbUser.push(user);
-    res.send(dbUser);
+    res.send('Saved User');
   });
 
-  //{method: 'DELETE'}
   app.delete('/user/:id', (req, res) => {
-    dbUser.splice(req.params.id - 1, 1);
-    res.send('Deleted User');
+    const user = dbUser.find(user => user.id === req.params.id);
+    const index = dbUser.indexOf(user);
+
+    dbUser.splice(index, 1);
+
+    res.send('Deleted user');
   });
 }
 
