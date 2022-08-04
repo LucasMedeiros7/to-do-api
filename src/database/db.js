@@ -1,4 +1,4 @@
 const dbUser = new Array();
-const dbTodos = new Array();
+const dbToDos = new Array();
 
-export { dbUser, dbTodos };
+export { dbUser, dbToDos };

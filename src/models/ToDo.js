@@ -1,4 +1,4 @@
-class TodosModel {
+class ToDo {
   constructor(id, text, status, userId) {
     this.id = id;
     this.text = text;
@@ -7,4 +7,4 @@ class TodosModel {
   }
 }
 
-export default TodosModel;
+export default ToDo;

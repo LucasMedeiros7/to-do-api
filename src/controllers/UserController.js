@@ -1,4 +1,4 @@
-import UserModel from '../models/UserModel.js';
+import User from '../models/User.js';
 import { dbUser } from '../database/db.js';
 
 function UserController(app) {
@@ -16,7 +16,7 @@ function UserController(app) {
   app.post('/user', (req, res) => {
     const { name, email, password } = req.body;
     const userId = dbUser.length + 1;
-    const user = new UserModel(userId, name, email, password);
+    const user = new User(userId, name, email, password);
 
     dbUser.push(user);
     res.send(dbUser);
