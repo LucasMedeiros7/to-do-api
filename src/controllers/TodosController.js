@@ -1,7 +1,7 @@
 import ToDo from '../models/ToDo.js';
 import { dbToDos } from '../database/db.js';
 
-function TodosController(app) {
+function ToDosController(app) {
   //{method: 'GET'}
   app.get('/todos', (req, res) => res.send(dbToDos));
 
@@ -27,4 +27,4 @@ function TodosController(app) {
   });
 }
 
-export default TodosController;
+export default ToDosController;
