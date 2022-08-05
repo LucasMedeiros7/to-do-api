@@ -1,10 +1,9 @@
-import { v4 } from 'uuid';
-
 class User {
-  constructor(name, email) {
-    this.id = v4();
+  constructor(id, name, email, password) {
+    this.id = id;
     this.name = name;
     this.email = email;
+    this.password = password;
   }
 }
 
