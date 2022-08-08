@@ -1,9 +1,14 @@
 /*
 Esse arquivo deve ser executado apenas uma vez para que a o banco seja criado e populado
 */
-import sqlite from 'sqlite3';
+import sqlite3 from 'sqlite3';
 
-const db = new sqlite.Database('./database.db');
+const db = new sqlite3.Database('./database.db', err => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log("Successful connection to the database 'database.db'");
+});
 
 //==== Usuários
 const USUARIOS_SCHEMA = `

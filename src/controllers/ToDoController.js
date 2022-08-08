@@ -1,5 +1,5 @@
 import ToDo from '../models/ToDo.js';
-import { dbToDos } from '../database/db.js';
+import { dbToDos } from '../infra/db.js';
 
 function ToDoController(app) {
   app.get('/todos', (req, res) => {

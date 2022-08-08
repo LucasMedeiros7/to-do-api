@@ -1,5 +1,5 @@
 import User from '../models/User.js';
-import { dbUser } from '../database/db.js';
+import { dbUser } from '../infra/db.js';
 
 function UserController(app) {
   app.get('/user', (req, res) => {
