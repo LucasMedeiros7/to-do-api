@@ -1,17 +1,16 @@
-import ToDo from '../models/ToDo.js';
-import { dbToDos } from '../infra/db.js';
+import Tarefa from '../models/Tarefa.js';
 
-function ToDoController(app) {
+export default function TarefasController(app, bd) {
   app.get('/todos', (req, res) => {
-    if (!dbToDos.length) {
+    if (!bd.length) {
       res.send('ToDos Not Found');
       return;
     }
-    res.send(dbToDos);
+    res.send(bd);
   });
 
   app.get('/todos/:id', (req, res) => {
-    const selectToDo = dbToDos.find(todo => +req.params.id == +todo.id);
+    const selectToDo = bd.find(todo => +req.params.id == +todo.id);
     if (!selectToDo) {
       res.send('ToDos Not Found');
       return;
@@ -22,17 +21,15 @@ function ToDoController(app) {
 
   app.post('/todos', (req, res) => {
     const { text, status, userId } = req.body;
-    const idTodo = dbToDos.length + 1;
-    const toDo = new ToDo(idTodo, text, status, userId);
+    const idTodo = bd.length + 1;
+    const toDo = new Tarefa(idTodo, text, status, userId);
 
-    dbToDos.push(toDo);
+    bd.push(toDo);
     res.send('Saved to your todoList');
   });
 
   app.delete('/todos/:id', (req, res) => {
-    dbToDos.splice(req.params.id - 1, 1);
+    bd.splice(req.params.id - 1, 1);
     res.send('Deleted ToDo');
   });
 }
-
-export default ToDoController;

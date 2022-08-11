@@ -1,15 +1,19 @@
 import express from 'express';
-import UserController from './controllers/UserController.js';
-import ToDoController from './controllers/ToDoController.js';
+import chalk from 'chalk';
+import UsuariosController from './controllers/UsuariosController.js';
+import TarefasController from './controllers/TarefasController.js';
+import bd from './infra/sqlite-db.js';
 
 const app = express();
 const port = 3333;
 
 app.use(express.json());
 
-UserController(app);
-ToDoController(app);
+UsuariosController(app, bd);
+TarefasController(app, bd);
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(
+    `Servidor rodando na em => ${chalk.cyan(`http://localhost:${port}`)}`
+  );
 });
