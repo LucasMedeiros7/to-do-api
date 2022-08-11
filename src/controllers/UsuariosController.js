@@ -1,7 +1,7 @@
 import Usuario from '../models/Usuario.js';
 
 export default function UsuariosController(app, bd) {
-  app.get('/user', (req, res) => {
+  app.get('/user', async (req, res) => {
     if (!bd.length) {
       res.send('User Not Found');
       return;
