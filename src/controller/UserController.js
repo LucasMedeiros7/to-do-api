@@ -1,4 +1,4 @@
-import { userData } from '../data/userData.js';
+import userData from '../data/userData.js';
 
 export default {
   async getUsers(req, res) {
@@ -11,7 +11,7 @@ export default {
 
       res.json(users);
     } catch (e) {
-      res.status(400).send(e);
+      res.status(400).json({ error: e.message });
     }
   },
 
@@ -28,7 +28,7 @@ export default {
       user[0].senha = undefined;
       res.json(user);
     } catch (e) {
-      res.status(400).send(e);
+      res.status(400).json({ error: e.message });
     }
   },
 };

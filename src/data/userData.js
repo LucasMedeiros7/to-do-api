@@ -1,31 +1,11 @@
-import { connection } from '../infra/database.js';
+import { database } from '../infra/database.js';
 
-export const userData = {
+export default {
   getUsers() {
-    return new Promise((resolve, reject) => {
-      connection.query('SELECT * FROM USUARIOS', (err, results) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(results);
-        }
-      });
-    });
+    return database.query('SELECT * FROM USUARIOS');
   },
 
   getUsersByID(id) {
-    return new Promise((resolve, reject) => {
-      connection.query(
-        'SELECT * FROM USUARIOS WHERE ID = $1',
-        [id],
-        (err, results) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(results);
-          }
-        }
-      );
-    });
+    return database.query(`SELECT * FROM USUARIOS WHERE ID = $1`, [id]);
   },
 };

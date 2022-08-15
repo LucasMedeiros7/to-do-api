@@ -5,15 +5,6 @@ const userRoutes = Router();
 
 userRoutes
   .get('/users', userController.getUsers)
-  .get('/users/:id', userController.getUsersByID)
-  .post('/users', (req, res) => {
-    res.send('Create user');
-  })
-  .put('/users/:id', (req, res) => {
-    res.send('Update user');
-  })
-  .delete('/users/:id', (req, res) => {
-    res.send('Delete user');
-  });
+  .get('/users/:id', userController.getUsersByID);
 
 export { userRoutes };
