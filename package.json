@@ -3,19 +3,24 @@
   "name": "todoapi",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "Lucas Medeiros",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "sqlite3": "^5.0.11"
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "sequelize-cli": "^6.4.1"
   }
 }
