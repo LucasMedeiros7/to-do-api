@@ -31,4 +31,15 @@ export default {
       res.status(400).json({ error: e.message });
     }
   },
+
+  async createUser(req, res) {
+    const user = req.body;
+
+    try {
+      await userData.createUser(user);
+      res.status(201).json({ message: 'User created' });
+    } catch (e) {
+      res.status(400).json({ error: e.message });
+    }
+  }
 };
