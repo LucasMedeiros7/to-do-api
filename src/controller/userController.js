@@ -34,7 +34,7 @@ export default {
 
   async createUser(req, res) {
     const user = req.body;
-
+    // inserir validação de de usuário!
     try {
       await userData.createUser(user);
       res.status(201).json({ message: 'User created' });
