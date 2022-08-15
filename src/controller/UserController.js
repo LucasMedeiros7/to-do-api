@@ -1,21 +1,34 @@
-import { connection } from '../database/database.js';
+import { userData } from '../data/userData.js';
 
 export default {
-  async get(req, res) {
-    res.json('Rota funcionando');
-  },
-
   async getUsers(req, res) {
     try {
-      const { rows } = await connection.query('SELECT * FROM "USUARIOS"');
+      const { rows: users } = await userData.getUsers();
 
-      rows.forEach(row => {
-        row.SENHA = undefined;
+      users.forEach(user => {
+        user.senha = undefined;
       });
 
-      res.send(rows);
-    } catch (error) {
-      console.log(error.message);
+      res.json(users);
+    } catch (e) {
+      res.status(400).send(e);
+    }
+  },
+
+  async getUsersByID(req, res) {
+    const id = req.params.id;
+
+    try {
+      const { rows: user } = await userData.getUsersByID(id);
+
+      if (!user) {
+        res.status(404).send('User not found');
+      }
+
+      user[0].senha = undefined;
+      res.json(user);
+    } catch (e) {
+      res.status(400).send(e);
     }
   },
 };
