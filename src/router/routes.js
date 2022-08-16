@@ -1,5 +1,7 @@
-import { router } from './userRoutes.js';
+import { userRouter } from './userRoutes.js';
+import { taskRouter } from './taskRoutes.js';
 
 export const routes = app => {
-  app.use(router);
+  app.use(userRouter);
+  app.use(taskRouter);
 };

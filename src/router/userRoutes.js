@@ -5,12 +5,12 @@ import {
   verifyUserExists,
 } from '../middleware/verifyUser.js';
 
-const router = Router();
+const userRouter = Router();
 
-router.get('/users', userController.getUsers);
-router.get('/users/:id', verifyUserExists, userController.getUsersByID);
-router.post('/users', verifyUserAlreadyExists, userController.createUser);
-router.put('/users/:id', verifyUserExists, userController.updateUser);
-router.delete('/users/:id', verifyUserExists, userController.deleteUser);
+userRouter.get('/users', userController.getUsers);
+userRouter.get('/users/:id', verifyUserExists, userController.getUsersByID);
+userRouter.post('/users', verifyUserAlreadyExists, userController.createUser);
+userRouter.put('/users/:id', verifyUserExists, userController.updateUser);
+userRouter.delete('/users/:id', verifyUserExists, userController.deleteUser);
 
-export { router };
+export { userRouter };
