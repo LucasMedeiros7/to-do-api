@@ -34,12 +34,35 @@ export default {
 
   async createUser(req, res) {
     const user = req.body;
-    // inserir validação de de usuário!
+
     try {
       await userData.createUser(user);
       res.status(201).json({ message: 'User created' });
     } catch (e) {
       res.status(400).json({ error: e.message });
     }
-  }
+  },
+
+  async updateUser(req, res) {
+    const id = req.params.id;
+    const user = req.body;
+
+    try {
+      await userData.updateUser(id, user);
+      res.status(200).json({ message: 'User updated' });
+    } catch (e) {
+      res.status(400).json({ error: e.message });
+    }
+  },
+
+  async deleteUser(req, res) {
+    const id = req.params.id;
+
+    try {
+      await userData.deleteUser(id);
+      res.status(200).json({ message: 'User deleted' });
+    } catch (e) {
+      res.status(400).json({ error: e.message });
+    }
+  },
 };
