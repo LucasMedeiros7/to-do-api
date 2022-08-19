@@ -1,4 +1,4 @@
-# 📚 ToDo API - Resilia
+# 📝 ToDo API - Resilia
 
 Desenvolvimento de uma API Rest para um aplicativo de lista de tarefas.
 
@@ -219,3 +219,4 @@ npm run dev
     "message": "Task deleted"
   }
   ```
+  ## Api hospedada no heroku : https://resilia-todo-api.herokuapp.com/
